@@ -1,7 +1,8 @@
 import { Button } from "antd";
 
 const ButtonControl = (props) => {
-return <Button {...props}>{props.label}</Button>;
+  const { text, type } = props;
+  return <Button {...props} htmlType={type}>{text}</Button>;
 };
 
 export default ButtonControl;

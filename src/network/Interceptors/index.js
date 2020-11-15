@@ -8,15 +8,11 @@ export const ErrorHandler = (response) => {
 }
 }
 
-export const SuccessHandler = (response) => {
+export const SuccessHandler = ({ data }) => {
   /* Toastify For Success tosatify.success() */
    return {
        success: true,
-       data: response
+       data
    }
 }
  
-Instance.interceptors.response.use(
-    response => SuccessHandler(response),
-    error => ErrorHandler(error)
-  );

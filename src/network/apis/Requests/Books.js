@@ -1,2 +1,2 @@
 import { Instance } from '..'
-export const bookSearch = (query) => Instance.get(`q=${query}`);
+export const searchRequest = async (query) => Instance.get(`/posts`);
