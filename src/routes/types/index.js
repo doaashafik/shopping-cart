@@ -1,0 +1,4 @@
+export const BOOK_SEARCH = 'BOOK_SEARCH';
+export const ERROR_REQUESTS = 'ERROR_REQUESTS';
+export const SUCCESS_REQUESTS = 'SUCCESS_REQUESTS';
+export const IS_LOADING = 'IS_LOADING';

@@ -1,13 +1,19 @@
-import { Instance } from '../apis/Instance'
+import { Instance } from '../apis'
 
 export const ErrorHandler = (response) => {
  /* Toastify For Error tosatify.error() */
- console.log('error', response)
+ return {
+    success: false,
+    data: response
+}
 }
 
 export const SuccessHandler = (response) => {
   /* Toastify For Success tosatify.success() */
-  console.log('success', response)
+   return {
+       success: true,
+       data: response
+   }
 }
  
 Instance.interceptors.response.use(
