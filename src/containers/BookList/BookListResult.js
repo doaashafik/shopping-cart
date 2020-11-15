@@ -6,11 +6,29 @@ const BookListResult = () => {
     <div className="book-search-result">
       {isLoading && <p className="text-center">is Loading....</p>}
       {!isLoading && data && (
-        <ul>
-          {data.map((item, id) => (
-            <li key={id}>{item.title}</li>
+        <div className="mt-2">
+          {data.items.map((item, id) => (
+            <div key={id} className="d-flex book-search-item">
+              {item.volumeInfo.imageLinks && (
+                <img
+                  src={item.volumeInfo.imageLinks.smallThumbnail}
+                  alt="small-thumbnail-book"
+                />
+              )}
+              <section>
+              <p>
+                <strong>Title:</strong> {item.volumeInfo.title}
+              </p>
+              <p>
+                <strong>Publisher: </strong> {item.volumeInfo.publisher}
+              </p>
+              <p>
+                <strong>Publisher: </strong> {item.volumeInfo.description}
+              </p>
+              </section>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

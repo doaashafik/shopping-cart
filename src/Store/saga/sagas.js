@@ -4,7 +4,7 @@ import { BookSearchAsync, isLoading } from "../actions/book";
 import { searchRequest } from "../../network/apis/Requests/Books";
 function* handleBookSearch(query) {
   yield put(isLoading(true));
-  const result = yield call(searchRequest, query);
+  const result = yield call(searchRequest, query.payload);
   if (result && result.success) {
     yield put(BookSearchAsync(result.data));
   }
