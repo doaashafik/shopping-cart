@@ -1,15 +1,15 @@
-import React, { Fragment } from "react";
+import React from "react";
 import BookListSearch from "./BookListSearch";
 import BookListResult from "./BookListResult";
-import './BookList.css'
+import './BookList.scss'
 const BookList = () => {
  
   return (
-    <Fragment>
-      <h1>Book Render</h1>
+    <div className="book-list-container">
+      <h1 className="text-center">Book Finder</h1>
       <BookListSearch />
       <BookListResult />
-    </Fragment>
+    </div>
   );
 };
 export default BookList;

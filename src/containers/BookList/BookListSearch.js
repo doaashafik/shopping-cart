@@ -4,6 +4,8 @@ import Button from "../../components/button/Button";
 import { BookSearch } from "../../Store/actions/book";
 import { InputControl } from "../../components/input/Input";
 import { Col, Row } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+
 const BookListSearch = () => {
   const dispatch = useDispatch();
 
@@ -19,7 +21,7 @@ const BookListSearch = () => {
         {({ setFieldValue, values }) => {
           const { search } = values;
           return (
-            <Row>
+            <Row justify="center">
             <Col span={12}>
               <Form className="d-flex">
                 <InputControl
@@ -27,11 +29,9 @@ const BookListSearch = () => {
                   placeholder="Search By Name"
                   name="search"
                   value={search}
-                  onChange={(event) =>
-                    setFieldValue("search", event.target.value)
-                  }
+                  onChange={(event) => setFieldValue("search", event.target.value)}
                 />
-                <Button type="submit" text="search" />
+                <Button type="submit" content={<SearchOutlined />} />
               </Form>
             </Col>
           </Row>
