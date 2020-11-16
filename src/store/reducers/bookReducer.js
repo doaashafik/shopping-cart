@@ -7,7 +7,7 @@ export const bookReducer = (state = INIT_STATE, action) => {
     case BOOK_SEARCH_ASYNC:
       return (state = { ...state, data: action.payload });
     case ERROR_REQUESTS:
-      return { ...state, isLoading: false, error: true };
+      return { ...state, error: true };
     case IS_LOADING:
       return {
         ...state,
