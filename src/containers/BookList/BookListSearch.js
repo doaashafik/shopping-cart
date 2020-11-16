@@ -9,24 +9,25 @@ const BookListSearch = () => {
   const dispatch = useDispatch();
 
   /* Submit Process */
-  const onSubmit = (query) => dispatch(BookSearch(query.search));
+  const onSubmit = (query, { resetForm }) => {
+    dispatch(BookSearch(query.search));
+    resetForm({})
+  };
 
   return (
     <div>
-      <Formik
-        onSubmit={onSubmit}
-        initialValues={{
-          search: "",
-        }}
-      >
-        {({ setFieldValue }) => (
-          <Row>
+      <Formik onSubmit={onSubmit} initialValues={{ search: "" }}>
+        {({ setFieldValue, values }) => {
+          const { search } = values;
+          return (
+            <Row>
             <Col span={12}>
               <Form className="d-flex">
                 <InputControl
                   type="text"
                   placeholder="Search By Name"
                   name="search"
+                  value={search}
                   onChange={(event) =>
                     setFieldValue("search", event.target.value)
                   }
@@ -35,7 +36,8 @@ const BookListSearch = () => {
               </Form>
             </Col>
           </Row>
-        )}
+          )
+        }}
       </Formik>
     </div>
   );
