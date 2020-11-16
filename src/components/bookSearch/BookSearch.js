@@ -1,10 +1,10 @@
 import { Formik, Form } from "formik";
-import Button from "../../../components/button/Button";
-import { InputControl } from "../../../components/input/Input";
+import Button from "../button/Button";
+import { InputControl } from "../input/Input";
 import { Col, Row } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
-const BookListSearch = ({ onSubmit }) => {
+const BookSearch = ({ onSubmit }) => {
   return (
     <div>
       <Formik onSubmit={onSubmit} initialValues={{ search: "" }}>
@@ -32,4 +32,4 @@ const BookListSearch = ({ onSubmit }) => {
   );
 };
 
-export default BookListSearch;
+export default BookSearch;

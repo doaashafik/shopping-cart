@@ -1,14 +1,13 @@
 import React from "react";
-import BookListSearch from "./BookListSearch";
-import { getBooks } from "../../store/selectors/book";
+import BookListSearch from "../../components/bookSearch/BookSearch";
 import { useDispatch, useSelector } from "react-redux";
-import { BookSearch } from "../../store/actions/book";
+import { BookSearch } from "../../store/Book/actions";
 import "./BookList.scss";
 import BookCard from "../../components/bookCard/BookCard";
 
 const BookList = () => {
   const dispatch = useDispatch();
-  const { data, error } = useSelector(getBooks);
+  const { data, error } = useSelector((state) => state.books);
 
   /* Submit Process */
   const onSubmit = (query) => {
@@ -19,11 +18,9 @@ const BookList = () => {
     <div className="book-list-container">
       <h1 className="text-center">Book Finder</h1>
       <BookListSearch onSubmit={onSubmit} />
-      {!error && data && (
+      {!error && data && data.items && (
         <div className="mt-2">
-          {data.items?.map((item, id) => (
-            <BookCard id={id} book={item.volumeInfo} />
-          ))}
+          {data.items.map((item, id) => (<BookCard id={id} book={item.volumeInfo} />))}
         </div>
       )}
     </div>

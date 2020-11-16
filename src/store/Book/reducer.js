@@ -1,4 +1,4 @@
-const { BOOK_SEARCH_ASYNC, ERROR_REQUESTS, IS_LOADING } = require("../types");
+const { BOOK_SEARCH_ASYNC, ERROR_REQUESTS, IS_LOADING } = require("./types");
 
 const INIT_STATE = {};
 

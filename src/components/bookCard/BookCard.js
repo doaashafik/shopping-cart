@@ -1,7 +1,7 @@
 import React from "react";
 
-const BookCard = (props) => {
-  const { imageLinks, description, title, publisher, id } = props;
+const BookCard = ({ book , id}) => {
+  const { imageLinks, description, title, publisher } = book;
   return (
     <div key={id} className="d-flex book-search-item">
       {imageLinks && (

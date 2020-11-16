@@ -1,13 +1,11 @@
-import axios from 'axios';
-import { SuccessHandler, ErrorHandler } from '../Interceptors';
-import { BASE_URL, GOOGLE_API_KEY} from '../../utils/Constants'
+import axios from "axios";
+import { SuccessHandler, ErrorHandler } from "../Interceptors";
+console.log(process.env, 'env')
 export const Instance = axios.create({
-    baseURL: BASE_URL,
-    params: {
-        key: GOOGLE_API_KEY
-    }
+  baseURL: process.env.REACT_APP_BASE_URL,
+  params: { key: process.env.REACT_APP_GOOGLE_API_KEY },
 });
 Instance.interceptors.response.use(
-    response => SuccessHandler(response),
-    error => ErrorHandler(error)
-  );
+  (response) => SuccessHandler(response),
+  (error) => ErrorHandler(error)
+);
