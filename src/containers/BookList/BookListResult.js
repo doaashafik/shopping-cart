@@ -23,7 +23,7 @@ const BookListResult = () => {
                 <strong>Publisher: </strong> {item.volumeInfo.publisher}
               </p>
               <p>
-                <strong>Publisher: </strong> {item.volumeInfo.description}
+                <strong>Description: </strong> {item.volumeInfo.description}
               </p>
               </section>
             </div>

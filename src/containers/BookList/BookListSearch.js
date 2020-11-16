@@ -1,9 +1,8 @@
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import Button from "../../components/button/Button";
-import "./BookList.css";
 import { BookSearch } from "../../Store/actions/book";
-import { InputControl } from "../../components/Input";
+import { InputControl } from "../../components/input/Input";
 import { Col, Row } from "antd";
 const BookListSearch = () => {
   const dispatch = useDispatch();
