@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { getBooks } from "../../Store/selectors/book";
+import { getBooks } from "../../store/selectors/book";
 import { LoadingOutlined } from "@ant-design/icons";
 const BookListResult = () => {
-  const { data, isLoading } = useSelector(getBooks);
+  const { data, isLoading, error } = useSelector(getBooks);
   return (
     <div className="book-search-result">
       {isLoading && (
@@ -10,7 +10,7 @@ const BookListResult = () => {
           <LoadingOutlined />
         </p>
       )}
-      {!isLoading && data && (
+      {!isLoading && error === undefined && data && (
         <div className="mt-2">
           {data.items.map((item, id) => {
             const {

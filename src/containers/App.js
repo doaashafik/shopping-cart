@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import store from "../Store";
+import store from "../store";
 import './App.scss'
 import BookList from "./BookList/BookList";
 function App() {

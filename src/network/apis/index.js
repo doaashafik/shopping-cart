@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { SuccessHandler, ErrorHandler } from '../Interceptors';
-
+import { BASE_URL, GOOGLE_API_KEY} from '../../utils/Constants'
 export const Instance = axios.create({
-    baseURL: 'https://www.googleapis.com/books/v1/volumes?',
+    baseURL: BASE_URL,
     params: {
-        key: 'AIzaSyB9HREZ2R-gIbdDSh0arzkvbFmDqS6YLSc'
+        key: GOOGLE_API_KEY
     }
 });
 Instance.interceptors.response.use(
