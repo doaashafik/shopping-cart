@@ -8,7 +8,7 @@ function* handleBookSearch(query) {
     const result = yield call(searchRequest, query.payload);
     yield put(BookSearchAsync(result.data));
   }
-  catch{
+  catch {
     yield put(BookSearchError());
   }  
 }

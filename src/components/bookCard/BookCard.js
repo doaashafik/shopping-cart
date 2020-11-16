@@ -1,9 +1,9 @@
 import React from "react";
 
-const BookCard = ({ book , id}) => {
+const BookCard = ({ book }) => {
   const { imageLinks, description, title, publisher } = book;
   return (
-    <div key={id} className="d-flex book-search-item">
+    <div className="d-flex book-search-item">
       {imageLinks && (
         <div>
           <img src={imageLinks.thumbnail} alt="small-thumbnail-book" />

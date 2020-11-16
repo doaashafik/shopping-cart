@@ -4,3 +4,4 @@ export const searchRequest = async (query) => Instance.get('/', {
         q: `${JSON.stringify(query)}`
     }
 });
+  
