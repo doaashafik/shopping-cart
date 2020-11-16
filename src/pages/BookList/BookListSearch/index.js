@@ -1,20 +1,10 @@
 import { Formik, Form } from "formik";
-import { useDispatch } from "react-redux";
-import Button from "../../components/button/Button";
-import { BookSearch } from "../../store/actions/book";
-import { InputControl } from "../../components/input/Input";
+import Button from "../../../components/button/Button";
+import { InputControl } from "../../../components/input/Input";
 import { Col, Row } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
-const BookListSearch = () => {
-  const dispatch = useDispatch();
-
-  /* Submit Process */
-  const onSubmit = (query, { resetForm }) => {
-    dispatch(BookSearch(query.search));
-    resetForm({})
-  };
-
+const BookListSearch = ({ onSubmit }) => {
   return (
     <div>
       <Formik onSubmit={onSubmit} initialValues={{ search: "" }}>

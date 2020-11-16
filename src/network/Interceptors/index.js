@@ -1,4 +1,3 @@
-import { Instance } from '../apis'
 
 export const ErrorHandler = (response) => {
  /* Toastify For Error tosatify.error() */
