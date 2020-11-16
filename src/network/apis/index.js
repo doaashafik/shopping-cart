@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SuccessHandler, ErrorHandler } from "../Interceptors";
+import { SuccessHandler,RequestHandler, ErrorHandler } from "../Interceptors";
 export const Instance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   params: { key: process.env.REACT_APP_GOOGLE_API_KEY },
@@ -7,4 +7,7 @@ export const Instance = axios.create({
 Instance.interceptors.response.use(
   (response) => SuccessHandler(response),
   (error) => ErrorHandler(error)
+);
+Instance.interceptors.request.use(
+  (request) => RequestHandler(request),
 );

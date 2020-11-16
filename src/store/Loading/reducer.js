@@ -1,18 +1,11 @@
-const { BOOK_SEARCH_RECIEVE, ERROR_REQUESTS, IS_LOADING } = require("./types");
+const { IS_LOADING_RECIEVE } = require("./types");
 
-const INIT_STATE = {};
+const INIT_STATE =  false;
 
-export const bookReducer = (state = INIT_STATE, action) => {
+export const loadingReducer = (state = INIT_STATE, action) => {
   switch (action.type) {
-    case BOOK_SEARCH_RECIEVE:
-      return (state = { ...state, data: action.payload });
-    case ERROR_REQUESTS:
-      return { ...state, error: true };
-    case IS_LOADING:
-      return {
-        ...state,
-        isLoading: action.payload,
-      };
+    case IS_LOADING_RECIEVE:
+      return state =  action.payload
     default:
       return state;
   }

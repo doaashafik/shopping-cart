@@ -1,13 +1,14 @@
 import React from "react";
-import { Provider } from "react-redux";
 import store from "../store";
 import './App.scss'
 import Routes from "../routes/routes";
+import Loading from "../components/loading/Loading";
 function App() {
   return (
-    <Provider store={store}>
+    <>
+      { store.getState().isLoading && <Loading /> }
       <Routes />
-    </Provider>
+    </>
   );
 }
 

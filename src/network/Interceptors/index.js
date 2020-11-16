@@ -1,11 +1,15 @@
-
+import store from '../../store/index'
+import { isLoading } from '../../store/Loading/actions'
 export const ErrorHandler = (response) => {
- /* Toastify For Error tosatify.error() */
+  store.dispatch(isLoading(false))
  return response
 }
 
 export const SuccessHandler = (response) => {
-  /* Toastify For Success tosatify.success() */
+   store.dispatch(isLoading(false))
   return response
 }
- 
+export const RequestHandler = (request) => {
+  store.dispatch(isLoading(true))
+ return request
+}
