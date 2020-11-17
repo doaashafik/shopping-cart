@@ -1,15 +1,18 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import BookList from "../pages/BookList/BookList";
-import { browserHistory } from './history'
+import { browserHistory } from "./history";
+import Loading from "../components/loading/Loading";
+import PrivateRoute from "./PrivateRoute";
+
+const BookList = React.lazy(() => import("../pages/BookList/BookList"));
 export default function Routes() {
   return (
     <Router history={browserHistory}>
-      <div>
+      <Suspense fallback={<Loading />}>
         <Switch>
-          <Route exact path="/" component={BookList}/>
+          <PrivateRoute exact path="/" component={BookList} />
         </Switch>
-      </div>
+      </Suspense>
     </Router>
   );
 }
