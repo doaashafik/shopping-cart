@@ -1,5 +1,5 @@
 {
-  "homepage": "http://doaashafik.github.io/Book-Render",
+  "homepage": "http://doaashafik.github.io/shopping-cart",
   "name": "book-finder",
   "version": "0.1.0",
   "private": true,
@@ -19,9 +19,8 @@
     "react-scripts": "4.0.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "redux-saga": "^1.1.3",
-    "web-vitals": "^0.2.4"
-  },
+    "redux-saga": "^1.1.3"
+   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

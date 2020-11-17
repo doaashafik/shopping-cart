@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import { bookReducer } from './Book/reducer';
+import { productReducer } from './Product/reducer';
 import { loadingReducer } from './Loading/reducer'
 export default combineReducers({
-    books: bookReducer,
+    products: productReducer,
     isLoading: loadingReducer
 })
