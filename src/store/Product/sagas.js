@@ -1,6 +1,7 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 import {  ALL_PRODUCTS } from "../types";
 import { allProductsRequest } from "../../network/apis/Requests/Product";
+import { allProductsRecieved, allProductsError } from "./actions";
 
 function* handleAllProducts(query) {
   try {

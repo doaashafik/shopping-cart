@@ -6,7 +6,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-       return authedUsr ? <Component {...props} /> : <Redirect to="/soka" />;
+       return authedUsr ? <Component {...props} /> : <Redirect to="/" />;
       }}
     />
   );
