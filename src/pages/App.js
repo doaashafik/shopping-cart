@@ -1,14 +1,15 @@
-import React from "react";
-import store from "../store";
-import './App.scss'
+import React, { Fragment } from "react";
+import "./App.scss";
 import Routes from "../routes/routes";
+import { useSelector } from "react-redux";
 import Loading from "../components/loading/Loading";
 function App() {
+  const loading = useSelector((state) => state.isLoading);
   return (
-    <>
-      { store.getState().isLoading && <Loading /> }
+    <Fragment>
+      {loading && <Loading />}
       <Routes />
-    </>
+    </Fragment>
   );
 }
 
