@@ -11,18 +11,26 @@ export const cartReducer = (state = INIT_STATE, action) => {
       return {items: state.items.filter((item) => item.id !== action.payload)};
 
     case actions.DECREASE_CART_ITEM:
-      return {items: state.items.map(minusItem)};
+      return {items: state.items.map(item => {
+        if(item.id == action.payload) minusItem(item)
+        return item
+      })};
 
     case actions.INCREASE_CART_ITEM:
-      return {items: state.items.map(plusItem)};
+      return {items: state.items.map((item) => {
+        if(item.id == action.payload) plusItem(item)
+        return item
+      })};
 
     case actions.TOTAL_PRICE:
-      const items = state.map(totalPricePerItem);
-      const total = items.map((item) => item.total).reduce((a, b) => a + b);
+      const items = state.items.map(totalPricePerItem);
+      const total = items
+      .map((item) => item.total)
+      .reduce((a, b) => a + b);
       return { items, total };
 
     case actions.SUBMIT_ORDER: 
-    return INIT_STATE
+    return { ...state, order: action.payload }
      default:
       return state;
   }

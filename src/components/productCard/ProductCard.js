@@ -6,12 +6,11 @@ import "./ProductCard.scss";
 const ProductCard = ({ product, addToCart }) => {
   const { price, image, category, title, id } = product;
   return (
-    <Link to={`/products/${id}`} className="site-card-border-less-wrapper">
       <Card
         cover={
-          <div className="product-image">
+          <Link to={`/products/${id}`} className="product-image">
             <img src={image} alt="product-image" />
-          </div>
+          </Link>
         }
         bordered={true}
         style={{ width: 300 }}
@@ -32,7 +31,6 @@ const ProductCard = ({ product, addToCart }) => {
           onClick={addToCart}
         />
       </Card>
-    </Link>
   );
 };
 export default ProductCard;

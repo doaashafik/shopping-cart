@@ -17,3 +17,11 @@ export const DecreaseCartItem = (payload) => ({
   type: types.DECREASE_CART_ITEM,
   payload,
 });
+export const submitUserOrder = (payload) => ({
+  type: types.SUBMIT_ORDER,
+  payload
+});
+
+export const getTotal = () => ({
+  type: types.TOTAL_PRICE
+});

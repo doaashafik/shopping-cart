@@ -1,9 +1,10 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
-import {InputControl as Input} from "../../../components/input/Input";
+import { InputControl as Input } from "../../../components/input/Input";
 import Button from "../../../components/button/Button";
 import { schema } from "./OrderFormSchema";
-const OrderForm = ({ onSubmit }) => {
+import { ErrorMessage } from "../../../components/errorMessage/ErrorMessage";
+const OrderForm = ({ submitForm }) => {
   return (
     <Formik
       initialValues={{
@@ -11,11 +12,12 @@ const OrderForm = ({ onSubmit }) => {
         phone: "",
         email: "",
       }}
-      onSubmit={onSubmit}
+      onSubmit={submitForm}
       validationSchema={schema}
     >
-      {({ values: { phone, email, address } }) => (
+      {({errors,  values: { phone, email, address } }) => (
         <Form>
+          <label>Email</label>
           <Field
             component={Input}
             name="email"
@@ -23,21 +25,27 @@ const OrderForm = ({ onSubmit }) => {
             placeholder="Your Email"
             value={email}
           />
-
+          <ErrorMessage message={errors.email} />
+          <br />
+          <label>Phone</label>
           <Field
             component={Input}
             name="phone"
-            type="number"
+            type="text"
             placeholder="Your Phone"
             value={phone}
           />
+          <ErrorMessage message={errors.phone} />
+          <br />
+          <label>Address</label>
           <Field
             component={Input}
-            name="email"
+            name="address"
             type="text"
             placeholder="Your Address"
             value={address}
           />
+          <ErrorMessage message={errors.address} />
           <Button content="Order Now" type="submit" />
         </Form>
       )}

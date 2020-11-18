@@ -20,10 +20,11 @@ const CartProducts = ({ name }) => {
     <>
       {items.length > 0 ? (
         <Fragment>
-          {items.map(({ title, id }) => (
+          {items.map(({ title, id, count }) => (
             <div key={id} className="cart-product">
               <span>
-                <strong>Name</strong> {" "} {title}
+                <strong>Name</strong> {" "} {title} {" "} 
+                <strong>Count</strong> {" "} {count}
               </span>{" "}
               <Button type="button" onClick={() => dispatch(deleteCartItem(id))}>
                 <DeleteOutlined />
