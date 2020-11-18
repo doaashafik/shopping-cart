@@ -3,10 +3,8 @@ import Button from "../button/Button";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
 import "./ProductCard.scss";
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, addToCart }) => {
   const { price, image, category, title, id } = product;
-
-  const addToCart = () => {};
   return (
     <Link to={`/products/${id}`} className="site-card-border-less-wrapper">
       <Card

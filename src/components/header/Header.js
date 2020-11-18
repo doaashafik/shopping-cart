@@ -1,17 +1,17 @@
 import React from "react";
-import { PageHeader } from "../profile/node_modules/antd";
-
+import { PageHeader } from "antd";
 import "./Header.scss";
-import CartDropdownMenu from "./HeaderCart/HeaderCart";
-import ProfileDropdownMenu from "./HeaderProfile/HeaderProfile";
+import HeaderCart from "./HeaderCart/HeaderCart";
+import HeaderProfile from "./HeaderProfile/HeaderProfile";
 
 const Header = () => {
   return (
     <PageHeader
       className="site-page-header"
-      onBack={() => null}
-      title={<CartDropdownMenu />}
-      extra={[<ProfileDropdownMenu key="more" />]}
+      backIcon={false}
+      subTitle="Products Shopping Cart"
+      title={<HeaderCart />}
+      extra={[<HeaderProfile key="more" />]}
     />
   );
 };

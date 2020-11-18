@@ -1,8 +1,8 @@
-import { Input } from "../profile/node_modules/antd";
+import { Input } from "antd";
 
 export const InputControl = (props) => {
   const {
-    field: { name, type, placeholder, type },
+    field: { name,value, placeholder, type },
     form: { setFieldValue },
   } = props;
   return (

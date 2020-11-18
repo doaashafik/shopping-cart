@@ -1,7 +1,8 @@
 import React from "react";
-import { Formik, Field } from "formik";
-import Input from "../../../components/input/Input";
+import { Formik, Field, Form } from "formik";
+import {InputControl as Input} from "../../../components/input/Input";
 import Button from "../../../components/button/Button";
+import { schema } from "./OrderFormSchema";
 const OrderForm = ({ onSubmit }) => {
   return (
     <Formik
@@ -11,30 +12,31 @@ const OrderForm = ({ onSubmit }) => {
         email: "",
       }}
       onSubmit={onSubmit}
+      validationSchema={schema}
     >
-      {({ values }) => (
+      {({ values: { phone, email, address } }) => (
         <Form>
           <Field
             component={Input}
             name="email"
             type="text"
             placeholder="Your Email"
-            value={values.email}
+            value={email}
           />
 
           <Field
             component={Input}
-            name="email"
+            name="phone"
             type="number"
             placeholder="Your Phone"
-            value={values.email}
+            value={phone}
           />
           <Field
             component={Input}
             name="email"
             type="text"
             placeholder="Your Address"
-            value={values.email}
+            value={address}
           />
           <Button content="Order Now" type="submit" />
         </Form>

@@ -1,14 +1,15 @@
-import ProfileMenu from "./HeaderProfile";
+import { Menu } from "antd";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Dropdown, Button } from "antd";
+import {UserOutlined   } from "@ant-design/icons";
 const ProfileMenu = (
-  <Menu>
-    <Menu.Item>
-      <Link to="/profile">Profile</Link>
-      <Link to="/profile">SignOut</Link>
-    </Menu.Item>
-  </Menu>
-);
+    <Menu>
+      <Menu.Item>
+        <a href="/profile">Profile</a>
+        <a href="/sign-out">SignOut</a>
+      </Menu.Item>
+    </Menu>
+  );
 const ProfileDropdownMenu = () => {
   return (
     <Dropdown key="more" overlay={ProfileMenu}>
@@ -18,7 +19,7 @@ const ProfileDropdownMenu = () => {
           padding: 0,
         }}
       >
-        <EllipsisOutlined
+        <UserOutlined  
           style={{
             fontSize: 20,
             verticalAlign: "top",

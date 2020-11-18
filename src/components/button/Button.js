@@ -1,9 +1,9 @@
 import { Button } from "antd";
 
 const ButtonControl = (props) => {
-  const { content, type } = props;
+  const { content, type, onClick } = props;
   return (
-    <Button htmlType={type}>
+    <Button onClick={onClick} htmlType={type}>
       {content}
     </Button>
   );

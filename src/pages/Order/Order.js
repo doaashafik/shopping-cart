@@ -1,20 +1,19 @@
 import React from "react";
 import OrderForm from "./OrderForm/OrderForm";
 import { OrderProducts } from "./OrderProducts/OrderProducts";
+import { Row, Col } from "antd";
 const Order = () => {
-  submitOrder = () => {};
+const submitOrder = () => {};
   return (
-    <div>
-      <h1 className="text-center">Order Review</h1>
-      <div className="order-now">
-        <h3>Submit Order</h3>
+    <Row>
+      <Col className="order-now" span={12}>
         <OrderForm  onSubmit={submitOrder}/>
-      </div>
-      <div className="order-products">
-        <h3>Selected Products</h3>
+      </Col>
+      <Col span={12} className="order-products">
+        <h3 className=" mt-2 text-center">Products</h3>
         <OrderProducts />
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 };
 
