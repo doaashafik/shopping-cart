@@ -1,4 +1,4 @@
-import ProfileMenu from "./ProfileMenu";
+import ProfileMenu from "./HeaderProfile";
 import React from "react";
 import { Link } from "react-router-dom";
 const ProfileMenu = (
