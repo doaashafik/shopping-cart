@@ -2,8 +2,8 @@ import React from "react";
 import { PageHeader } from "../profile/node_modules/antd";
 
 import "./Header.scss";
-import CartDropdownMenu from "../cart/CartDropDown";
-import ProfileDropdownMenu from "../profile/ProfileDropDown";
+import CartDropdownMenu from "./Components/CartDropDown";
+import ProfileDropdownMenu from "./Components/ProfileDropDown";
 
 const Header = () => {
   return (

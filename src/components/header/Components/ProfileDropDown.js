@@ -1,7 +1,14 @@
 import ProfileMenu from "./ProfileMenu";
 import React from "react";
-import ProfileMenu from './ProfileMenu'
-
+import { Link } from "react-router-dom";
+const ProfileMenu = (
+  <Menu>
+    <Menu.Item>
+      <Link to="/profile">Profile</Link>
+      <Link to="/profile">SignOut</Link>
+    </Menu.Item>
+  </Menu>
+);
 const ProfileDropdownMenu = () => {
   return (
     <Dropdown key="more" overlay={ProfileMenu}>

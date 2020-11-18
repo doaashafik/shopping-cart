@@ -1,4 +1,4 @@
-import * as actions from "../types";
+import * as actions from "./types";
 
 const INIT_STATE = {};
 

@@ -1,4 +1,4 @@
-import { ALL_PRODUCTS,ERROR_REQUESTS, ALL_PRODUCTS_RECIEVE } from "../types";
+import { ALL_PRODUCTS,ERROR_REQUESTS, ALL_PRODUCTS_RECIEVE } from "./types";
 
 export const allProductsRequest = (payload) => ({
   type: ALL_PRODUCTS,
