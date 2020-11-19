@@ -12,7 +12,7 @@ const Order = ({ history }) => {
 
   useEffect(()=> {
    dispatch(getTotal())
- })
+ },[total])
 
 
   const submitForm = (values) => {
@@ -28,22 +28,20 @@ const Order = ({ history }) => {
       {items.length > 0 ? (
         <Fragment>
           <Col className="order-now" span={10}>
-          <h3 className="mt-2">Order Now</h3>
+            <h3 className="mt-2">Order Now</h3>
             <OrderForm submitForm={submitForm} />
           </Col>
           <Col span={10} className="order-products">
-            <h3 className="mt-2">Products</h3>
+              <h3 className="mt-2">Products</h3>
             {items.map((product, id) => (
               <OrderProduct key={id} product={product} />))}
               <strong>Total: {total}</strong>
           </Col>
         </Fragment>
       ) : (
-        <div >
-         <h3 className="text-center mt-2">Ok it's Done!,
-          Back to Shopping Again!
-          <Link to="/products">Products</Link> </h3>
-          {redirectToMainPage()}
+        <div>
+          <h3 className="text-center mt-2">Ok it's Done!,Back to Shopping Again!
+          <Link to="/products">Products</Link> </h3> {redirectToMainPage()}
         </div>
       )}
     </Row>

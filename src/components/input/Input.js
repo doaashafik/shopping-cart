@@ -2,10 +2,11 @@ import { Input } from "antd";
 
 export const InputControl = (props) => {
   const {
-    field: { value, name },
+    field: { name },
     type,
     placeholder,
     className,
+    value,
     form: { setFieldValue },
   } = props;
   return (
