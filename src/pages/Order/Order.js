@@ -4,39 +4,50 @@ import { OrderProduct } from "./OrderProducts/OrderProducts";
 import { Row, Col } from "antd";
 import { submitUserOrder, getTotal } from "../../store/Cart/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-const Order = () => {
+import { Link, withRouter } from "react-router-dom";
+import './Order.scss'
+const Order = ({ history }) => {
   const dispatch = useDispatch();
- useEffect(()=> {
+  const { items, total } = useSelector((state) => state.cart);
+
+  useEffect(()=> {
    dispatch(getTotal())
- }, [])
+ }, [dispatch])
+
+
   const submitForm = (values) => {
     dispatch(submitUserOrder(values));
   };
-  const { items, total } = useSelector((state) => state.cart);
+
+  const redirectToMainPage= () => {
+    setTimeout(()=>{history.push('/products');}, 3000);
+  }
 
   return (
     <Row>
       {items.length > 0 ? (
         <Fragment>
-          <Col className="order-now" span={12}>
+          <Col className="order-now" span={10}>
+          <h3 className="mt-2">Order Now</h3>
             <OrderForm submitForm={submitForm} />
           </Col>
-          <Col span={12} className="order-products">
-            <h3 className=" mt-2 text-center">Products</h3>
+          <Col span={10} className="order-products">
+            <h3 className="mt-2">Products</h3>
             {items.map((product, id) => (
-            <OrderProduct key={id} product={product} />))}
+              <OrderProduct key={id} product={product} />))}
+              <strong>Total: {total}</strong>
           </Col>
-          <p>Total: {total}</p>
         </Fragment>
       ) : (
-        <div className="text-center mt-2">
-          "Your Request Submitted You Can Back to Shopping Again"
-          <Link to="/products">Products</Link>
+        <div >
+         <h3 className="text-center mt-2">Your Request Submitted,
+          Back to Shopping Again!
+          <Link to="/products">Products</Link> </h3>
+          {redirectToMainPage()}
         </div>
       )}
     </Row>
   );
 };
 
-export default Order;
+export default withRouter(Order);

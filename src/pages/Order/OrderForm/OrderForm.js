@@ -4,6 +4,7 @@ import { InputControl as Input } from "../../../components/input/Input";
 import Button from "../../../components/button/Button";
 import { schema } from "./OrderFormSchema";
 import { ErrorMessage } from "../../../components/errorMessage/ErrorMessage";
+import './OrderForm.scss';
 const OrderForm = ({ submitForm }) => {
   return (
     <Formik
@@ -19,6 +20,7 @@ const OrderForm = ({ submitForm }) => {
         <Form>
           <label>Email</label>
           <Field
+            className="order-input"
             component={Input}
             name="email"
             type="text"
@@ -29,6 +31,7 @@ const OrderForm = ({ submitForm }) => {
           <br />
           <label>Phone</label>
           <Field
+            className="order-input"
             component={Input}
             name="phone"
             type="text"
@@ -39,6 +42,7 @@ const OrderForm = ({ submitForm }) => {
           <br />
           <label>Address</label>
           <Field
+            className="order-input"
             component={Input}
             name="address"
             type="text"

@@ -5,11 +5,13 @@ export const InputControl = (props) => {
     field: { value, name },
     type,
     placeholder,
+    className,
     form: { setFieldValue },
   } = props;
   return (
     <Input
       name={name}
+      className={className}
       value={value}
       type={type}
       placeholder={placeholder}
