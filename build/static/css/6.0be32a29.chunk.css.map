@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/pages/ProductDetail/ProductDetail.scss"],"names":[],"mappings":"AACA,kCACI,YAAa","file":"6.0be32a29.chunk.css","sourcesContent":["\n.product-card-border-less-wrapper {\n    padding: 15px;\n}"]}
