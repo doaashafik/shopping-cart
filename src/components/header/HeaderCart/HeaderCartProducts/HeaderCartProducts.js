@@ -44,7 +44,7 @@ export const HeaderCartProducts = () => {
               </Button>{" "}
             </div>
           ))}
-          <a href={"/#/order"} className="order-review">
+          <a href={"/shopping-cart/#/order"} className="order-review">
             Review Order
           </a>
         </Fragment>
