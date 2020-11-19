@@ -31,7 +31,8 @@ export const cartReducer = (state = INIT_STATE, action) => {
 
     case actions.TOTAL_PRICE:
       const items = state.items.map(totalPricePerItem);
-      const total = items.map((item) => item.total).reduce((a, b) => a + b);
+      const itemsAfterTotal = items.map((item) => item.total);
+      const total = itemsAfterTotal.length > 0 ? total.reduce((a, b) => a + b) : 0
       return { items, total };
 
     case actions.SUBMIT_ORDER:
