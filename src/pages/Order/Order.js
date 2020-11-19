@@ -12,7 +12,7 @@ const Order = ({ history }) => {
 
   useEffect(()=> {
    dispatch(getTotal())
- }, [dispatch])
+ })
 
 
   const submitForm = (values) => {
