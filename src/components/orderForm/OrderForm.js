@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
-import { InputControl as Input } from "../../../components/input/Input";
-import Button from "../../../components/button/Button";
+import { InputControl as Input } from "../input/Input";
+import Button from "../button/Button";
 import { schema } from "./OrderFormSchema";
-import { ErrorMessage } from "../../../components/errorMessage/ErrorMessage";
+import { ErrorMessage } from "../errorMessage/ErrorMessage";
 import './OrderForm.scss';
 const OrderForm = ({ submitForm }) => {
   return (
