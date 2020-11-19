@@ -1,5 +1,4 @@
 import store from '../../store/index'
-import { isLoading } from '../../store/Loading/actions'
 export const ErrorHandler = (response) => {
  return response
 }

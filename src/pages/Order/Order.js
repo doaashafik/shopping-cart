@@ -25,8 +25,7 @@ const Order = () => {
           <Col span={12} className="order-products">
             <h3 className=" mt-2 text-center">Products</h3>
             {items.map((product, id) => (
-            <OrderProduct key={id} product={product} />
-            ))}
+            <OrderProduct key={id} product={product} />))}
           </Col>
           <p>Total: {total}</p>
         </Fragment>

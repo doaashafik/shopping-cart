@@ -8,7 +8,7 @@ import { ProductDetail, ProductList, Order } from '../utils/LazyLoad'
 export default function Routes() {
   return (
     <Router history={browserHistory}>
-      <Suspense fallback={<Loading/>}>
+      <Suspense fallback={<Loading />}>
         <Switch>
           <PrivateRoute exact  path="/products" component={ProductList} />
           <PrivateRoute exact path="/products/:id" component={ProductDetail} />

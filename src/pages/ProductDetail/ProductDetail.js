@@ -1,43 +1,52 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import "./ProductDetail.scss";
 import { productDetailsRequest } from "../../network/apis/Requests/Product";
 import { withRouter } from "react-router-dom";
+import './ProductDetail.scss'
 class ProductDetail extends React.Component {
   state = {
-    data: {},
+    product: {},
   };
   componentDidMount() {
-    productDetailsRequest(1).then(({ data }) => {
+    const {
+      params: { id },
+    } = this.props.match;
+    productDetailsRequest(id).then(({ data }) => {
       this.setState({
-        data,
+        product: data,
+        recieved: true
       });
     });
   }
 
   render() {
-    const { price, image, category, title, description } = this.state.data;
+    const {recieved, product } = this.state;
+    const { price, image, category, title, description } = product;
     return (
-      <div className="site-card-border-less-wrapper">
-        {image && (
-          <div className="product-image">
-            <img src={image} alt="product-image" />
+      <Fragment>
+        {recieved && (
+          <div className="product-card-border-less-wrapper">
+            <p>
+              <strong>{title}</strong>
+            </p>
+            <div className="product-image">
+              <img src={image} alt="product" />
+            </div>
+            
+            <p>
+              <strong>Category: </strong> {category}
+            </p>
+            <p>
+              <strong>Price: </strong>
+              {price}
+            </p>
+            <p>
+              <strong>Description: </strong>
+              {description}
+            </p>
           </div>
         )}
-        <p>
-          <strong>Name: </strong> {title}
-        </p>
-        <p>
-          <strong>Category: </strong> {category}
-        </p>
-        <p>
-          <strong>Price: </strong>
-          {price}
-        </p>
-        <p>
-          <strong>Description: {description} </strong>
-          {price}
-        </p>
-      </div>
+      </Fragment>
     );
   }
 }
