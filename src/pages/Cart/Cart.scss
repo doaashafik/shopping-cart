@@ -6,3 +6,14 @@
     width: 200px;
     text-align: center;
 }
+.cart-product {
+    .add-to-cart {
+        display: flex;
+        width: 78px;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+h1 {
+    padding-inline-start: 25px;
+}

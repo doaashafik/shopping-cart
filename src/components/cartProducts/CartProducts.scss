@@ -1,7 +1,10 @@
 .cart-product {
   padding-inline-start: 20px;
   padding: 10px;
-  width: 600px;
+  max-width: 600px;
+  .content p {
+    max-width: 250px;
+  }
 }
 .badge-icon {
   vertical-align: inherit;
@@ -19,3 +22,4 @@
     width: 100%;
   }
 }
+

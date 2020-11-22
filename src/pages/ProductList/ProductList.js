@@ -22,7 +22,7 @@ class ProductList extends React.Component {
     return (
       <div className="product-list-container">
         { products && (
-          <div className="mt-2 d-flex flex-wrap">
+          <div className="mt-2 d-flex flex-wrap justify-content-center">
             {products.map((item, id) => (
               <ProductCard
                 addToCart={() => this.addToCart(item)}

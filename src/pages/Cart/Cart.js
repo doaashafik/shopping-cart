@@ -5,10 +5,8 @@ import './Cart.scss'
 const Cart = () => {
     const { items } = useSelector((state) => state.cart);
   return (
-    <Fragment>
-        <h1 className="mt-2">
-            Shopping Cart
-        </h1>
+    <div className="car-container">
+        <h1 className="mt-2"> Shopping Cart</h1>
       {items.length > 0 ? (
         <>
           <CartProducts items={items}/>
@@ -17,9 +15,9 @@ const Cart = () => {
           </a>
         </>
       ) : (
-        <strong>Start Shopping Now!</strong>
+        <p className="text-center">Start Shopping Now!</p>
       )}
-    </Fragment>
+    </div>
   );
 };
 export default Cart;

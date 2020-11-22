@@ -1,23 +1,23 @@
 import * as actions from "./types";
 import { totalPricePerItem, minusItem, plusItem } from "./reducerUtils";
-import { addItemToCart } from "./actions";
 const INIT_STATE = { items: [], count: 0 };
 
 const addItem = (items, item) => {
+  console.log(item, items)
  const itemFound = items.filter(i => item.id == i.id);
  if(itemFound.length > 0) {
    itemFound[0].count++;
-   return [...items, itemFound[0]]
+   return [...items.filter(i => i.id !== item.id), itemFound[0]]
  }
  else {
-   return [...items, item]
+   return [...items, {...item, count: 1 }]
  }
 }
 export const cartReducer = (state = INIT_STATE, action) => {
   switch (action.type) {
     case actions.ADD_TO_CART:
       // handle count global
-      const item = { ...action.payload, count: 1 };
+      const item = { ...action.payload };
       return {
         ...state,
         items: addItem(state.items, item),
@@ -28,7 +28,7 @@ export const cartReducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         items: state.items.filter((item) => item.id !== action.payload),
-        count: state.count - 1,
+        count: state.count == 0 ? 0: state.count - 1,
       };
 
     case actions.DECREASE_CART_ITEM:
@@ -38,7 +38,7 @@ export const cartReducer = (state = INIT_STATE, action) => {
           if (item.id === action.payload) minusItem(item);
           return item;
         }),
-        count: state.count - 1,
+        count: state.count == 0 ? 0: state.count - 1,
       };
 
     case actions.INCREASE_CART_ITEM:

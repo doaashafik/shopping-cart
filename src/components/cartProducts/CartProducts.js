@@ -1,50 +1,49 @@
-import React, { Fragment } from "react";
-import { Button, Badge } from "antd";
+import React, { Fragment, useEffect } from "react";
+import { Badge } from "antd";
 import { useDispatch } from "react-redux";
 import "./CartProducts.scss";
-import {
-  MinusSquareOutlined,
-  PlusSquareOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
-import {
-  deleteCartItem,
-  IncreaseCartItem,
-  DecreaseCartItem,
-} from "../../store/Cart/actions";
-
+import { DeleteOutlined } from "@ant-design/icons";
+import { deleteCartItem } from "../../store/Cart/actions";
+import { Notification } from "../notification/Notification";
+import { AddToCart } from "../addToCart/AddToCart";
 export const CartProducts = ({ items }) => {
   const dispatch = useDispatch();
   return (
-    <Fragment>
-      {items.map(({ title, total, price, id, image, count }) => (
-        <div key={id + 'product'} className="cart-product d-flex">
-          <div className="content">
-            <p>{title}</p>
-            <p>{price}</p>
-          </div>
+    <>
+      {items.map((item) => {
+        const { title, image, id, price } = item;
+        return (
+          <div key={id + "product"} className="cart-product d-flex">
+            <div className="content">
+              <p>{title}</p>
+              <p>{price}</p>
+            </div>
 
-          <div className="product-image">
-            <img src={image} alt="product-image" />
+            <div className="product-image">
+              <img src={image} alt="product-image" />
+            </div>
+            <Notification>
+              {({ notifiy }) => {
+                return (
+                  <div>
+                    <AddToCart item={item} notifiy={notifiy} />
+                    <DeleteOutlined
+                      onClick={async () => {
+                        await notifiy({
+                          title,
+                          message: "Was Deleted Successfully",
+                        });
+                       await dispatch(deleteCartItem(id));
+                      }}
+                      className="mt-2 product-icon"
+                    />
+                  </div>
+                );
+              }}
+            </Notification>
           </div>
-          <div>
-            <PlusSquareOutlined
-              onClick={() => dispatch(IncreaseCartItem(id))}
-              className="product-icon"
-            />{" "}
-            <Badge count={count} className="badge-icon" />{" "}
-            <MinusSquareOutlined
-              onClick={() => dispatch(DecreaseCartItem(id))}
-              className="product-icon"
-            />
-            <br />
-            <DeleteOutlined
-              onClick={() => dispatch(deleteCartItem(id))}
-              className="mt-2 product-icon"
-            />
-          </div>
-        </div>
-      ))}
-    </Fragment>
+        );
+      })}
+    </>
   );
 };

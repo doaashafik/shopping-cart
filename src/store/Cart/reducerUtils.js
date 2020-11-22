@@ -4,7 +4,7 @@ export const plusItem = (item) => {
 };
 
 export const minusItem = (item) => {
-  item.count = item.count == 1 ? 1 : item.count - 1;
+  item.count = item.count >= 1 ? item.count - 1: 0;
   return item;
 };
 export const totalPricePerItem = (item) => {

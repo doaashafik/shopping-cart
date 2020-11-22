@@ -7,12 +7,11 @@ import { Link, withRouter } from "react-router-dom";
 
 const Header = ({history  }) => {
   const path = history.location.pathname
-  console.log(path)
+  console.log(path != '/products')
   return (
     <PageHeader
       className="site-page-header"
-      backIcon={path !== '/products'}
-      onBack={() => window.history.back()}
+      onBack={() =>  path !== '/products' && window.history.back() }
       title={"Ecommerce Shopping"}
       extra={[
       <HeaderProfile key="profile" />,
