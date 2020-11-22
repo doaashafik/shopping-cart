@@ -28,7 +28,7 @@ export const cartReducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         items: state.items.filter((item) => item.id !== action.payload),
-        count: state.count == 0 ? 0: state.count - 1,
+        count: state.count >= 1 ? state.count - 1: 0,
       };
 
     case actions.DECREASE_CART_ITEM:
@@ -36,9 +36,9 @@ export const cartReducer = (state = INIT_STATE, action) => {
         ...state,
         items: state.items.map((item) => {
           if (item.id === action.payload) minusItem(item);
-          return item;
+          return item
         }),
-        count: state.count == 0 ? 0: state.count - 1,
+        count: state.count >= 1 ? state.count - 1: 0,
       };
 
     case actions.INCREASE_CART_ITEM:
