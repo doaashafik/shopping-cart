@@ -4,7 +4,7 @@ import { productDetailsRequest } from "../../network/apis/Requests/Product";
 import { useParams } from "react-router-dom";
 import "./ProductDetail.scss";
 import { AddToCart } from "../../components/addToCart/AddToCart";
-import { Notification } from "../../components/notification/Notification";
+import { Notification, open } from "../../components/notification/Notification";
 import { useSelector } from "react-redux";
 const ProductDetail = ({}) => {
   const [data, setData] = useState({});
@@ -18,16 +18,13 @@ const ProductDetail = ({}) => {
         recieved: true,
       });
     });
-  },[]);
-
-  useEffect(() => {
-  }, [items])
+  }, []);
 
   const { recieved, product } = data;
-  console.log(items)
+  const item = items.filter((i) => i.id == product.id);
   return (
     <Fragment>
-      {recieved &&  (
+      {recieved && (
         <div className="product-card-border-less-wrapper">
           <p>{product.title}</p>
           <div className="product-image">
@@ -37,18 +34,10 @@ const ProductDetail = ({}) => {
             <p>{product.category}</p>
             <p>{product.price}</p>
           </div>
-          <Notification>
-            {({ notifiy }) => {
-              console.log(product, items)
-              const item = items.filter((i) => i.id == product.id);
-              return (
-                <AddToCart
-                  item={{ ...product, count: item.length > 0 ? item[0].count : 0}}
-                  notifiy={notifiy}
-                />
-              );
-            }}
-          </Notification>
+          <AddToCart
+            item={{ ...product, count: item.length > 0 ? item[0].count : 0 }}
+            notifiy={open}
+          />
           <p className="mt-2">{product.description}</p>
         </div>
       )}

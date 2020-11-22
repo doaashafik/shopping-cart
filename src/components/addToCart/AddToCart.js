@@ -14,14 +14,11 @@ export const AddToCart = ({ notifiy, item }) => {
   return (
     <div className="add-to-cart">
       <span
-        onClick={async () => {
-          await notifiy({
-            title,
-            message: "Added To Cart",
-          });
-          if (count == 0) await dispatch(addItemToCart(item));
+        onClick={() => {
+           notifiy({ title, message: "Added To Cart" });
+          if (count == 0)  dispatch(addItemToCart(item));
           else {
-            await dispatch(IncreaseCartItem(id));
+             dispatch(IncreaseCartItem(id));
           }
         }}
       >

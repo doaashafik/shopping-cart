@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Card } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import "./ProductCard.scss";
-import { Notification } from "../notification/Notification";
+import { ErrorBoundary } from "../errorBoundries/ErrorBoundries";
 const ProductCard = ({ product, addToCart }) => {
   const { price, image, category, title, id } = product;
   return (
@@ -18,13 +18,10 @@ const ProductCard = ({ product, addToCart }) => {
     >
       <p className="d-flex justify-content-between">
         <strong>{title}</strong>
-            <span
-              onClick={addToCart}
-            >
-              <ShoppingCartOutlined
-                style={{ fontSize: "25px", color: "green" }}
-              />
-            </span>
+        <ShoppingCartOutlined
+          onClick={addToCart}
+          style={{ fontSize: "25px", color: "green" }}
+        />
       </p>
       <p className="d-flex justify-content-between">
         <strong>{category}</strong>

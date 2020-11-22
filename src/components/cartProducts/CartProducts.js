@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import "./CartProducts.scss";
 import { DeleteOutlined } from "@ant-design/icons";
 import { deleteCartItem } from "../../store/Cart/actions";
-import { Notification } from "../notification/Notification";
+import { Notification, open } from "../notification/Notification";
 import { AddToCart } from "../addToCart/AddToCart";
 export const CartProducts = ({ items }) => {
   const dispatch = useDispatch();
@@ -22,14 +22,11 @@ export const CartProducts = ({ items }) => {
             <div className="product-image">
               <img src={image} alt="product-image" />
             </div>
-            <Notification>
-              {({ notifiy }) => {
-                return (
-                  <div>
-                    <AddToCart item={item} notifiy={notifiy} />
+            <div>
+                    <AddToCart item={item} notifiy={open} />
                     <DeleteOutlined
                       onClick={async () => {
-                        await notifiy({
+                        await open({
                           title,
                           message: "Was Deleted Successfully",
                         });
@@ -38,9 +35,6 @@ export const CartProducts = ({ items }) => {
                       className="mt-2 product-icon"
                     />
                   </div>
-                );
-              }}
-            </Notification>
           </div>
         );
       })}

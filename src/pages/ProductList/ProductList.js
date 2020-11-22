@@ -1,55 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import ProductCard from "../../components/productCard/ProductCard";
 import { allProductsRequest } from "../../store/Product/actions";
 import { addItemToCart } from "../../store/Cart/actions";
-import { connect } from "react-redux";
-import { Notification } from "../../components/notification/Notification";
+import {  useSelector, useDispatch } from "react-redux";
+import { open } from "../../components/notification/Notification";
+import { ErrorBoundary } from "../../components/errorBoundries/ErrorBoundries";
 
-class ProductList extends React.Component {
-  state = {
-    disable: false,
-  };
-
-  componentDidMount() {
-    this.props.getProducts();
+const ProductList  = () => {
+  const { data } = useSelector(state => state.products)
+  const dispatch = useDispatch()
+ const handler = (item) => {
+      open({
+        title: item.title,
+        message:
+          "Your Item Added Successfully To Shopping Cart",
+      });
+      dispatch(addItemToCart(item))
   }
-  render() {
-    const { items, products } = this.props;
+    useEffect(() => {
+      dispatch(allProductsRequest())
+    }, [])
     return (
-      <div className="product-list-container">
-        {products && (
+      <ErrorBoundary className="product-list-container">
+        {data && (
           <div className="mt-2 d-flex flex-wrap justify-content-center">
-            {products.map((item, id) => (
-              <Notification>
-                {({ notifiy }) => (
-                  <ProductCard
-                    addToCart={() => {
-                      notifiy({
-                        title: item.title,
-                        message:
-                          "Your Item Added Successfully To Shopping Cart",
-                      });
-                      this.props.addItem(item);
-                    }}
-                    key={`${id}-id`}
-                    product={item}
-                  />
-                )}
-              </Notification>
+            {data.map((item, id) => (
+              <ProductCard
+              addToCart={() => handler(item)}
+              product={item}
+            />
             ))}
           </div>
         )}
-      </div>
+      </ErrorBoundary>
     );
   }
-}
-const mapStateToProps = (state) => ({
-  products: state.products.data,
-  items: state.cart.items,
-});
-const mapDispatchToProps = (dispatch) => ({
-  getProducts: () => dispatch(allProductsRequest()),
-  addItem: (item) => dispatch(addItemToCart(item)),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
+export default (ProductList);

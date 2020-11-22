@@ -1,26 +1,15 @@
 import * as actions from "./types";
-import { totalPricePerItem, minusItem, plusItem } from "./reducerUtils";
+import { totalPricePerItem, minusItem, addItem, plusItem } from "./reducerUtils";
 const INIT_STATE = { items: [], count: 0 };
 
-const addItem = (items, item) => {
-  console.log(item, items)
- const itemFound = items.filter(i => item.id == i.id);
- if(itemFound.length > 0) {
-   itemFound[0].count++;
-   return [...items.filter(i => i.id !== item.id), itemFound[0]]
- }
- else {
-   return [...items, {...item, count: 1 }]
- }
-}
+
 export const cartReducer = (state = INIT_STATE, action) => {
   switch (action.type) {
     case actions.ADD_TO_CART:
-      // handle count global
       const item = { ...action.payload };
       return {
         ...state,
-        items: addItem(state.items, item),
+        items: addItem([...state.items], item),
         count: state.count + 1,
       };
 
@@ -58,10 +47,10 @@ export const cartReducer = (state = INIT_STATE, action) => {
         itemsAfterTotal.length > 0
           ? itemsAfterTotal.reduce((a, b) => a + b)
           : 0;
-      return { items, total };
+      return {...state, items, total };
 
     case actions.SUBMIT_ORDER:
-      return { items: [], order: action.payload, count: 0 };
+      return { ...state, items: [], order: action.payload, count: 0 };
     default:
       return state;
   }

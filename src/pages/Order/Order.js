@@ -41,7 +41,7 @@ const Order = ({ history }) => {
       ) : (
         <div>
           <h3 className="text-center mt-2">Ok it's Done!,Back to Shopping Again!
-          <Link to="/products">Products</Link> </h3> {redirectToMainPage()}
+          <a href="/shopping-cart/#/products">Products</a> </h3> {redirectToMainPage()}
         </div>
       )}
     </Row>

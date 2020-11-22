@@ -11,3 +11,14 @@ export const totalPricePerItem = (item) => {
   item.total = item.count * item.price;
   return item;
 };
+
+export const addItem = (items, item) => {
+  const itemFound = items.filter(i => item.id == i.id);
+  if(itemFound.length > 0) {
+    itemFound[0].count++;
+    return [...items.filter(i => i.id !== item.id), itemFound[0]]
+  }
+  else {
+    return [...items, {...item, count: 1 }]
+  }
+ }
