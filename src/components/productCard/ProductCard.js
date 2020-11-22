@@ -18,23 +18,13 @@ const ProductCard = ({ product, addToCart }) => {
     >
       <p className="d-flex justify-content-between">
         <strong>{title}</strong>
-        <Notification>
-          {({ notifiy }) => (
             <span
-              onClick={async () => {
-                await notifiy({
-                  title,
-                  message: "Your Item Added Successfully To Shopping Cart",
-                });
-                await addToCart();
-              }}
+              onClick={addToCart}
             >
               <ShoppingCartOutlined
                 style={{ fontSize: "25px", color: "green" }}
               />
             </span>
-          )}
-        </Notification>
       </p>
       <p className="d-flex justify-content-between">
         <strong>{category}</strong>
