@@ -39,10 +39,12 @@ const Order = ({ history }) => {
           </Col>
         </Fragment>
       ) : (
-        <div>
-          <h3 className="text-center mt-2">Ok it's Done!,Back to Shopping Again!
-          <a href="/shopping-cart/#/products">Products</a> </h3> {redirectToMainPage()}
-        </div>
+        <Col className="mt-2 submit-message" span={10} >
+          <h3 className="">Ok it's Done!,Back to Shopping Again!
+          {" "} {" "}
+          <a href="/shopping-cart/#/products">Products</a> </h3> 
+          {redirectToMainPage()}
+        </Col>
       )}
     </Row>
   );

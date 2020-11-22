@@ -22,3 +22,5 @@ export const addItem = (items, item) => {
     return [...items, {...item, count: 1 }]
   }
  }
+
+ export const getCount = (items) => items.map(item => item.count).reduce((a, b) => a + b)

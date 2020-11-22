@@ -5,7 +5,6 @@ import { allProductsRequest } from "../../store/Product/actions";
 import { addItemToCart } from "../../store/Cart/actions";
 import {  useSelector, useDispatch } from "react-redux";
 import { open } from "../../components/notification/Notification";
-import { ErrorBoundary } from "../../components/errorBoundries/ErrorBoundries";
 
 const ProductList  = () => {
   const { data } = useSelector(state => state.products)
@@ -22,7 +21,7 @@ const ProductList  = () => {
       dispatch(allProductsRequest())
     }, [])
     return (
-      <ErrorBoundary className="product-list-container">
+      <div className="product-list-container">
         {data && (
           <div className="mt-2 d-flex flex-wrap justify-content-center">
             {data.map((item, id) => (
@@ -34,7 +33,7 @@ const ProductList  = () => {
             ))}
           </div>
         )}
-      </ErrorBoundary>
+      </div>
     );
   }
 export default (ProductList);
