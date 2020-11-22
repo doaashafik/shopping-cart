@@ -27,6 +27,7 @@ const ProductList  = () => {
           <div className="mt-2 d-flex flex-wrap justify-content-center">
             {data.map((item, id) => (
               <ProductCard
+              key={`${id} id`}
               addToCart={() => handler(item)}
               product={item}
             />
