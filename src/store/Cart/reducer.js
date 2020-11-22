@@ -31,7 +31,7 @@ export const cartReducer = (state = INIT_STATE, action) => {
       let res_2 = state.items.map((item) => {
         if (item.id === action.payload) minusItem(item);
         return item;
-      });
+      }).filter(item => item.count > 0)
       return {
         ...state,
         items: res_2,

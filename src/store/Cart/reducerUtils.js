@@ -23,4 +23,7 @@ export const addItem = (items, item) => {
   }
  }
 
- export const getCount = (items) => items.map(item => item.count).reduce((a, b) => a + b)
+ export const getCount = (items) =>{
+  const counts = items.map(item => item.count);
+  return counts.length > 0 ? counts.reduce((a, b) => a + b): 0
+ }

@@ -1,8 +1,8 @@
 import { notification } from 'antd';
 
-export  const open = ({ message, title}) => {
+export  const open = ({slug, message, title}) => {
   notification.open({
-    message: 'ADD ITEM',
+    message: slug,
     description: `${title} ${message}`,
     duration: 3,
     placement: 'topRight',

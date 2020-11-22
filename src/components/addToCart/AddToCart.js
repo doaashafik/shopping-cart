@@ -15,10 +15,10 @@ export const AddToCart = ({ notifiy, item }) => {
     <div className="add-to-cart">
       <span
         onClick={() => {
-           notifiy({ title, message: "Added To Cart" });
-          if (count == 0)  dispatch(addItemToCart(item));
+          notifiy({slug: "Add Item", title, message: "Added To Cart" });
+          if (count == 0) dispatch(addItemToCart(item));
           else {
-             dispatch(IncreaseCartItem(id));
+            dispatch(IncreaseCartItem(id));
           }
         }}
       >
@@ -32,6 +32,7 @@ export const AddToCart = ({ notifiy, item }) => {
       />{" "}
       <span
         onClick={() => {
+          notifiy({ slug: "Remove Item", title, message: "Removed From Cart" });
           dispatch(DecreaseCartItem(id));
         }}
       >

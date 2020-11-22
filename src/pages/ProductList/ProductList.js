@@ -11,6 +11,7 @@ const ProductList  = () => {
   const dispatch = useDispatch()
  const handler = (item) => {
       open({
+        slug: "Add Item To Cart",
         title: item.title,
         message:
           "Your Item Added Successfully To Shopping Cart",

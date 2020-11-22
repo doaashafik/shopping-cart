@@ -23,18 +23,19 @@ export const CartProducts = ({ items }) => {
               <img src={image} alt="product-image" />
             </div>
             <div>
-                    <AddToCart item={item} notifiy={open} />
-                    <DeleteOutlined
-                      onClick={async () => {
-                        await open({
-                          title,
-                          message: "Was Deleted Successfully",
-                        });
-                       await dispatch(deleteCartItem(id));
-                      }}
-                      className="mt-2 product-icon"
-                    />
-                  </div>
+              <AddToCart item={item} notifiy={open} />
+              <DeleteOutlined
+                onClick={() => {
+                  open({
+                    slug: "Delete Item",
+                    title,
+                    message: "Was Deleted Successfully",
+                  });
+                  dispatch(deleteCartItem(id));
+                }}
+                className="mt-2 product-icon"
+              />
+            </div>
           </div>
         );
       })}
