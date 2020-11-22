@@ -21,7 +21,7 @@ const ProductDetail = ({}) => {
   }, []);
 
   const { recieved, product } = data;
-  const item = items.filter((i) => i.id == product.id);
+  const item = product ? items.filter((i) => i.id == product.id): {};
   return (
     <Fragment>
       {recieved && (
@@ -36,7 +36,14 @@ const ProductDetail = ({}) => {
           </div>
           <AddToCart
             item={{ ...product, count: item.length > 0 ? item[0].count : 0 }}
-            notifiy={open}
+            notifiy={() => {
+              open({
+                slug: "Delete Item",
+                title: product.title,
+                message: "Was Deleted Successfully",
+              })
+            }
+              }
           />
           <p className="mt-2">{product.description}</p>
         </div>
